@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}
+    blogPost
+{% endblock title %}
+
+{% block body %}
+<body>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #00ABE4, #E9F1FA);
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 50px auto; /* Adjust the margin to center the container vertically */
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+        text-align: center;
+    }
+
+    img {
+        display: block;
+        margin: 20px auto; /* Adjust the margin to center the image */
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+
+<div class="container">
+
+    <h1>{{ post.title }}</h1>
+    <h6>{{ post.date }}</h6>
+    <img src="{{ post.photo.url }}" alt="{{ text }}" class="card-img-top" width="500" height="200">
+    <p>{{ post.text }}</p>
+    <h5>Created by:{{ post.name }}</h5>
+</div>
+<body>
+{% endblock body %}

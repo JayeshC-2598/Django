@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title%}
+blog search
+{% endblock title%}
+
+{% block body %}
+<style>
+      .card {
+        border: none;
+        transition: transform 0.2s;
+        border-radius: 10px; /* Rounded corners for the container */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add shadow */
+      }
+      .card:hover {
+        transform: scale(1.05);
+      }
+      .card-text {
+        /* Style for the paragraph text */
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-4">
+      <div class="row">
+        {% for x in img %}
+          <div class="col-md-12 mb-4">
+            <div class="card d-flex flex-row">
+              <div class="p-4">
+                <img src="{{x.photo.url}}" alt="{{x.text}}" class="card-img-top" width="500" height="200">
+              </div>
+              <div class="card-body">
+                <p class="card-text">{{x.title}}</p>
+                <p class="card-title">{{x.content}}</p>
+                <p class="card-text">{{x.date}}</p>
+                <p class="card-text">{{x.text | truncatechars:100}}
+                <p class="card-text">{{x.name}}</p>
+                <!-- Display text in paragraph form -->
+                <a href="/blog/{{x.slug}}" class="btn btn-primary">Read More</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <style>
+   body {
+        background: linear-gradient(to right, #00ABE4, #E9F1FA); /* Set a background color for the entire page */
+    }
+
+</style>
+
+
+{% endblock body %}

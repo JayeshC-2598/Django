@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title%}
+contact page
+{% endblock title%}
+
+{% block body %}
+
+<body class="bg-light">
+<section id="about" class="about d-flex align-items-center text-light py-5" id="about" style="background: linear-gradient(to right, #00ABE4, #E9F1FA);">
+
+
+<div class="container mt-5">
+
+    <form method="post"  action="contact" class="mt-4">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number">
+        </div>
+
+        <div class="form-group">
+            <label for="content">Describe your issue:</label>
+            <textarea class="form-control" id="content" name="content" rows="5" placeholder="Describe your issue"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+</section>
+{% endblock body %}

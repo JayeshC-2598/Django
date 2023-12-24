@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}
+Home page
+{% endblock title %}
+
+{% block body %}
+<style>
+    .card {
+        border: none;
+        transition: transform 0.2s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+       /* Dark background color */
+        color: black; /* Text color */
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .card-text {
+        /* Style for the paragraph text */
+        font-size: 16px;
+    }
+</style>
+</head>
+<body>
+    <section class="home py-1 d-flex align-items-center" id="header" style="background: url('https://images.pexels.com/photos/733856/pexels-photo-733856.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center fixed; background-size: cover;">
+        <div class="container text text-light py-5" data-aos="fade-right">
+<!--            <h1 class="headline text">-->
+<!--                Read most Recent Technical Topics:-->
+<!--            </h1>-->
+<!--            <p class="para py-3">-->
+<!--                iBlog is a blog where you find <br>-->
+<!--                the most important topics and add your opinion as well.-->
+<!--            </p>-->
+
+<!--            <div class="my-3">-->
+<!--                <a class="btn btn bg-primary text-white" href="">Login Here</a>-->
+<!--            </div>-->
+<!--        </div>-->
+
+        <div class="container mt-4">
+            <div class="row">
+                {% for x in img|slice:":3"%}
+                <div class="col-md-12 mb-4">
+                    <div class="card d-flex flex-row">
+                        <div class="p-4">
+                            <img src="{{x.photo.url}}" alt="{{x.text}}" class="card-img-top" width="500" height="200">
+                        </div>
+                        <div class="card-body">
+                           <h1 class="card-text"> <b> {{x.title}}</b></h1>
+                            <p class="card-text">{{x.date}}</p>
+                            <p class="card-text">{{x.text | truncatechars:100}}
+                               <p class="card-text"> <b>Created By :</b>{{x.name}}</p>
+                            <!-- Display text in paragraph form -->
+                            <a href="{% url 'blogHome' %}" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</body>
+
+{% endblock body %}
